@@ -1,0 +1,135 @@
+﻿.NewPerson-Field-Set {
+    float: left;
+    width: 370px;
+    margin: 15px;
+    padding: 0.65%;
+    background-color: grey;
+    border-radius: 8px;
+}
+
+    .NewPerson-Field-Set legend {
+        margin: auto;
+        font-weight: bolder;
+    }
+
+    .NewPerson-Field-Set p {
+        width: 275px;
+        margin: auto;
+        border-style: ridge;
+        border-color: white;
+        border-radius: 8px;
+        padding: 3.5%;
+    }
+
+        .NewPerson-Field-Set p > input {
+            width: 270px;
+            margin: auto;
+        }
+
+    .NewPerson-Field-Set p {
+        display: block;
+        padding: 2%;
+    }
+
+        .NewPerson-Field-Set p > #AddPerson, #DeletePerson, #UpdatePerson {
+            display: inline-block;
+            right: 10px;
+            margin-top: 5px;
+            width: 45%;
+            height: 25px;
+            border-radius: 8px;
+            border-style: none;
+        }
+
+    .NewPerson-Field-Set #AddPerson, #DeletePerson, #UpdatePerson {
+        background-color: #13A303;
+        font-weight: bolder;
+        text-align: center;
+        margin: auto;
+    }
+
+    .NewPerson-Field-Set #DeletePerson:active {
+        outline: none;
+        box-shadow: 0 4px 0 0 #666667;
+        transform: translateY(4px);
+    }
+
+    .NewPerson-Field-Set #DeletePerson:focus {
+        outline: none;
+    }
+
+    .NewPerson-Field-Set #AddPerson:active {
+        outline: none;
+        box-shadow: 0 4px 0 0 #666667;
+        transform: translateY(4px);
+    }
+
+    .NewPerson-Field-Set #AddPerson:focus {
+        outline: none;
+    }
+
+    .NewPerson-Field-Set #UpdatePerson:active {
+        outline: none;
+        box-shadow: 0 4px 0 0 #666667;
+        transform: translateY(4px);
+    }
+
+    .NewPerson-Field-Set #UpdatePerson:focus {
+        outline: none;
+    }
+
+    .NewPerson-Field-Set p #LoginMessage {
+        display: block;
+        text-align: center;
+        padding: 2%;
+    }
+
+.SearchPerson-Field-Set {
+    float: left;
+    margin: 15px;
+    width: 400px;
+    padding: 0.65%;
+    background-color: grey;
+    border-radius: 8px;
+}
+
+    .SearchPerson-Field-Set legend {
+        margin: auto;
+        font-weight: bolder;
+    }
+
+    .SearchPerson-Field-Set #SearchPerson {
+        background-color: #13A303;
+        font-weight: bolder;
+        text-align: center;
+        margin: auto;
+        border-radius: 8px;
+        border-style: none;
+        width: 20%;
+        height: 25px;
+    }
+
+        .SearchPerson-Field-Set #SearchPerson:active {
+            outline: none;
+            box-shadow: 0 4px 0 0 #666667;
+            transform: translateY(4px);
+        }
+
+        .SearchPerson-Field-Set #SearchPerson:focus {
+            outline: none;
+        }
+
+    .SearchPerson-Field-Set table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .SearchPerson-Field-Set td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
