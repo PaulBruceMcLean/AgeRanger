@@ -61,7 +61,7 @@ namespace Age_Ranger.Controllers
         [Route("Person/Find/{mv_PersonFirstName}")]
         public string FindPerson(string mv_PersonFirstName)
         {
-            Dictionary<string, List<PersonModel>> Results = new Dictionary<string, List<PersonModel>>(); ;
+            Dictionary<string, List<PersonModel>> Results = new Dictionary<string, List<PersonModel>>();
             if (ModelState.IsValid)
             {               
                 string OutPutMessage = string.Empty;

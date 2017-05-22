@@ -113,7 +113,6 @@ namespace Age_Ranger.DataProvider
             }
             finally
             {
-                connection.Close();
                 command.Dispose();
                 CleanProvider();
             }
@@ -172,7 +171,6 @@ namespace Age_Ranger.DataProvider
             }
             finally
             {
-                connection.Close();
                 command.Dispose();
                 CleanProvider();
             }
