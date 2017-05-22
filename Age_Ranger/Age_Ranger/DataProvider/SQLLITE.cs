@@ -55,7 +55,6 @@ namespace Age_Ranger.DataProvider
 
         private void CleanProvider()
         {
-            command = null;
             transactionIsolation = IsolationLevel.Unspecified;
             QueryParameters.Clear();
             TransActional = false;
@@ -82,18 +81,22 @@ namespace Age_Ranger.DataProvider
                     {
                         command.Parameters.AddRange(QueryParameters.ToArray());
                     }
+                    command.Connection = connection;
                     if (TransActional)
                     {
                         transaction = connection.BeginTransaction(transactionIsolation);
-                    }
-                    command.Connection = connection;
-                    command.Transaction = transaction;
+                        command.Transaction = transaction;
+                    }                   
                     returnResult = command.ExecuteNonQuery();
-                    transaction.Commit();
+                    if (TransActional)
+                    {
+                        transaction.Commit();
+                    }
                 }
             }
-            catch (SQLiteException)
+            catch (SQLiteException ex)
             {
+
                 //Will be a good idea to add fault logging here;
                 returnResult = 0;
                 try
@@ -110,6 +113,8 @@ namespace Age_Ranger.DataProvider
             }
             finally
             {
+                connection.Close();
+                command.Dispose();
                 CleanProvider();
             }
 
@@ -137,12 +142,14 @@ namespace Age_Ranger.DataProvider
                     {
                         command.Parameters.AddRange(QueryParameters.ToArray());
                     }
+                    command.Connection = connection;
                     if (TransActional)
                     {
                         transaction = connection.BeginTransaction(transactionIsolation);
+                        command.Transaction = transaction;
                     }
-                    command.Connection = connection;
-                    command.Transaction = transaction;
+                    
+                   
                     SQLiteDataReader resultsTableReader = command.ExecuteReader();
 
                     while (resultsTableReader.Read())
@@ -162,21 +169,11 @@ namespace Age_Ranger.DataProvider
             catch (SQLiteException ex)
             {
                 OutPutMessage = "There was an Error Retrieving Data from the DataBase";
-                //Will be a good idea to add fault logging here;
-                try
-                {
-                    // This catch block will handle any errors that may have occurred
-                    // on the server that would cause the rollback to fail, such as
-                    // a closed connection.
-                    transaction.Rollback();
-                }
-                catch (Exception)
-                {
-
-                }
             }
             finally
             {
+                connection.Close();
+                command.Dispose();
                 CleanProvider();
             }
             return PersonResults;

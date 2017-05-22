@@ -174,7 +174,15 @@ namespace Age_Ranger.AgeRangerRepository
                 string commandString = "delete from Person where Id = @ID";
                 DataAccess.CreateCommand(commandString, System.Data.CommandType.Text, true);
                 DataAccess.CreateQueryParameter("@ID", System.Data.DbType.Int64, PersonID);
-                DataAccess.CreateTransaction(true, System.Data.IsolationLevel.ReadCommitted);
+                switch (DataAccess.DataAccessType)
+                {
+                    case "SQLite":
+                        DataAccess.CreateTransaction(false, System.Data.IsolationLevel.ReadCommitted);
+                        break;
+                    case "SQL":
+                        DataAccess.CreateTransaction(true, System.Data.IsolationLevel.ReadCommitted);
+                        break;
+                }
                 if (DataAccess.ExecuteNonQuery() > 0)
                 {
                     return "Person has been Succesfully removed from Database";
@@ -269,7 +277,15 @@ namespace Age_Ranger.AgeRangerRepository
                 DataAccess.CreateQueryParameter("@LastName", System.Data.DbType.String, NewPerson.PersonLastName);
                 DataAccess.CreateQueryParameter("@Age", System.Data.DbType.Int32, NewPerson.CurrentAge);
                 DataAccess.CreateQueryParameter("@Id", System.Data.DbType.Int64, NewPerson.PersonID);
-                DataAccess.CreateTransaction(true, System.Data.IsolationLevel.ReadUncommitted);
+                switch (DataAccess.DataAccessType)
+                {
+                    case "SQLite":
+                        DataAccess.CreateTransaction(false, System.Data.IsolationLevel.ReadCommitted);
+                        break;
+                    case "SQL":
+                        DataAccess.CreateTransaction(true, System.Data.IsolationLevel.ReadCommitted);
+                        break;
+                }
                 if (DataAccess.ExecuteNonQuery() > 0)
                 {
                     return "Person has been Succesfully Updated";

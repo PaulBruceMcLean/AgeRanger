@@ -26,6 +26,8 @@ namespace Age_Ranger.DataProvider
         /// </summary>
         public bool ConfigurationsSet { get { return pvt_ConfigurationsSet; } }
 
+        public string DataAccessType { get { return SQL_DataRepository_Type; } }
+
         private ISQLGeneric data_provider;
 
         /// <summary>
